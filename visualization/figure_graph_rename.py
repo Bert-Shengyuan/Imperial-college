@@ -14,11 +14,11 @@ from scipy.stats import entropy
 
 
 #%%
-be_data = scipy.io.loadmat('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_trackdata.mat')
-mat_trigger = np.load('/Users/sonmjack/Downloads/simon_paper/shengyuan_trigger_fam1.npy')
+be_data = scipy.io.loadmat('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_trackdata.mat')
+mat_trigger = np.load('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_fam1.npy')
 import h5py
 
-type_array = h5py.File('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_timeseries.mat')
+type_array = h5py.File('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_timeseries.mat')
 
 gene = type_array['genotype'][:, :].T
 # mat_label = np.zeros((gene.shape[0],4))
@@ -73,22 +73,22 @@ del be_x, be_data,  be_y, be_time, be_speed, be_phi_sum
 Type = 'Young'
 if Type == 'Young':
     gene_list = gene_list_young
-    with open('/Users/sonmjack/Downloads/age2 result_fam1/fam1_all_EPSP_young.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/fam1_all_EPSP_young.pkl', 'rb') as file:
         dy_list_fam1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_nov/nov_all_EPSP_young.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_nov/nov_all_EPSP_young.pkl', 'rb') as file:
         dy_list_nov = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_EPSP_young.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_EPSP_young.pkl', 'rb') as file:
         dy_list_famr2 = pickle.load(file)
 elif Type == 'Old':
     gene_list = gene_list_old
-    with open('/Users/sonmjack/Downloads/age10 result_fam1/fam1_all_EPSP.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1/fam1_all_EPSP.pkl', 'rb') as file:
         dy_list_fam1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_nov/nov_all_EPSP.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_nov/nov_all_EPSP.pkl', 'rb') as file:
         dy_list_nov = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_EPSP.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_EPSP.pkl', 'rb') as file:
         dy_list_famr2 = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/fam1r2_neuron_list_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1r2_neuron_list_age2.pkl', 'rb') as file:
     neuron_spike = pickle.load(file)
 #%%
 test = dy_list_famr2[4]
@@ -520,8 +520,8 @@ plt.tick_params(axis='y', labelsize=18)
 plt.ylabel("Normalized Values",fontsize=25)
 plt.tight_layout()
 #plt.xlabel("Wild type (age < 6)",fontsize=16)
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Chain Young WT2'+'.pdf')
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Chain Young WT'+'.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Chain Young WT2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Chain Young WT'+'.svg')
 plt.show()
 #%%
 import scipy.stats as stats
@@ -593,8 +593,8 @@ plt.tick_params(axis='y', labelsize=18)
 #plt.title("Chain motif",fontsize=16)
 plt.ylabel("Normalized Values",fontsize=18)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Reciprocal Young WT2'+'.pdf')
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Reciprocal Young WT'+'.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Reciprocal Young WT2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Reciprocal Young WT'+'.svg')
 plt.show()
 #%%
 import scipy.stats as stats
@@ -653,8 +653,8 @@ plt.tick_params(axis='y', labelsize=18)
 
 plt.ylabel("Clustering coefficient",fontsize=25)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Clustering Young WT2'+'.pdf')
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Clustering Young WT2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Clustering Young WT2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Clustering Young WT2'+'.pdf')
 plt.show()
 
 #%%
@@ -718,8 +718,8 @@ plt.tick_params(axis='y', labelsize=18)
 #plt.title("Chain motif",fontsize=16)
 plt.ylabel("Global cost",fontsize=18)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole cost Young WT2'+'.pdf')
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole cost Young WT'+'.png',dpi=800)
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole cost Young WT2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole cost Young WT'+'.png',dpi=800)
 plt.show()
 #%%
 import scipy.stats as stats
@@ -782,8 +782,8 @@ plt.tick_params(axis='y', labelsize=18)
 #plt.title("Chain motif",fontsize=16)
 plt.ylabel("Global efficiency",fontsize=18)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole efficiency Young WT2'+'.pdf')
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole efficiency Young WT'+'.png',dpi=800)
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole efficiency Young WT2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole efficiency Young WT'+'.png',dpi=800)
 plt.show()
 #%%
 t, p1 = stats.ttest_rel(reciprocal_list_wt_fam, reciprocal_list_wt_nov)
@@ -847,8 +847,8 @@ plt.tick_params(axis='y', labelsize=18)
 #plt.title("Chain motif",fontsize=16)
 plt.ylabel("Normalized Values",fontsize=18)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole con Young WT2'+'.pdf')
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole con Young WT'+'.png',dpi=800)
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole con Young WT2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole con Young WT'+'.png',dpi=800)
 plt.show()
 
 #%%
@@ -913,8 +913,8 @@ plt.tick_params(axis='y', labelsize=18)
 #plt.title("Chain motif",fontsize=16)
 plt.ylabel("Normalized Values",fontsize=18)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole di Young WT2'+'.pdf')
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole di Young WT'+'.png',dpi=800)
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole di Young WT2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole di Young WT'+'.png',dpi=800)
 plt.show()
 #%%
 # import scipy.stats as stats
@@ -1039,7 +1039,7 @@ ax.spines['right'].set_visible(False)
 plt.tick_params(axis='y', labelsize=18)
 # plt.xlabel("5xFAD (age < 6)",fontsize=18)
 plt.ylabel("Clustering coefficient",fontsize=18)
-#plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Clustering Young AD'+'.pdf')
+#plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Clustering Young AD'+'.pdf')
 plt.show()
 
 
@@ -1093,8 +1093,8 @@ plt.tick_params(axis='y', labelsize=16)
 
 # plt.xlabel("5xFAD (age < 6)",fontsize=16)
 plt.ylabel("Geodesic path length",fontsize=18)
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Geodesic Young AD2'+'.pdf')
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Geodesic Young AD'+'.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Geodesic Young AD2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Geodesic Young AD'+'.svg')
 plt.show()
 
 #%%
@@ -1152,8 +1152,8 @@ plt.tick_params(axis='y', labelsize=16)
 plt.title("Chain motif",fontsize=16)
 plt.ylabel("Normalized values",fontsize=16)
 plt.xlabel("5xFAD (age < 6)",fontsize=16)
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Chain Young AD2'+'.pdf')
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Chain Young AD'+'.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Chain Young AD2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Chain Young AD'+'.svg')
 plt.show()
 #%%
 import scipy.stats as stats
@@ -1216,8 +1216,8 @@ plt.tick_params(axis='y', labelsize=18)
 plt.ylabel("Normalized values",fontsize=18)
 #plt.xlabel("5xFAD (age < 6)",fontsize=16)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Reciprocal Young AD2'+'.pdf')
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/'+'Whole Reciprocal Young AD'+'.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Reciprocal Young AD2'+'.pdf')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/'+'Whole Reciprocal Young AD'+'.svg')
 plt.show()
 
 #%%
@@ -1419,6 +1419,6 @@ plt.show()
     # #t, p = stats.ttest_rel(dy_list[i], dy_list_shuffled[i])
     # t, p = stats.ttest_rel(list(degree_values_p1), list(degree_values_p2))
     # plt.text(0.15, 0.9, f'p_value = {p:.4f}', transform=plt.gca().transAxes, fontsize=7)
-    # plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/graph/' + 'weak connection' + f'-{type}-' + f'{i}.jpg')
+    # plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/graph/' + 'weak connection' + f'-{type}-' + f'{i}.jpg')
     # plt.close()
 

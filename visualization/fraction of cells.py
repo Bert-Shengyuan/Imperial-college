@@ -9,11 +9,11 @@ import numpy as np
 from scipy import stats
 import pandas as pd
 #%%
-be_data = scipy.io.loadmat('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_trackdata.mat')
-mat_trigger = np.load('/Users/sonmjack/Downloads/simon_paper/shengyuan_trigger_fam1.npy')
+be_data = scipy.io.loadmat('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_trackdata.mat')
+mat_trigger = np.load('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_fam1.npy')
 import h5py
 
-type_array = h5py.File('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_timeseries.mat')
+type_array = h5py.File('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_timeseries.mat')
 
 gene = type_array['genotype'][:, :].T
 # mat_label = np.zeros((gene.shape[0],4))
@@ -109,18 +109,18 @@ del be_x, be_data,  be_y, be_time, be_speed, be_phi_sum
 #%%
 Type = 'Young'
 if Type == 'Young':
-    with open('/Users/sonmjack/Downloads/age2 result_fam1/fam1_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/fam1_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_nov/nov_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_nov/nov_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve2 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve3 = pickle.load(file)
 elif Type == 'Old':
-    with open('/Users/sonmjack/Downloads/age10 result_fam1/fam1_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1/fam1_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_nov/nov_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_nov/nov_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve2 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve3 = pickle.load(file)
 average_tuning_curve = []
 
@@ -210,10 +210,10 @@ for index in range(len(All_tuning_curve1)):
         type = 'AD'
         pass
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT Global tuning curve for 3'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT Global tuning curve for 3'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT Global tuning curve for 3'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT Global tuning curve for 3'+'.jpg')
     plt.close()
 #%%
 if Type == 'Young':
@@ -247,10 +247,10 @@ for index in range(len(All_tuning_curve1)):
         type = 'AD'
         pass
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'AD Global tuning curve for 3'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'AD Global tuning curve for 3'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'AD Global tuning curve for 3'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'AD Global tuning curve for 3'+'.jpg')
     plt.close()
 
 #%%
@@ -339,20 +339,20 @@ def prepare_data_asy(data,group_name):
 if Type == 'Young':
     gene_list = gene_list_young
     fig, axes = plt.subplots(6, 1, figsize=(12, 36))
-    with open('/Users/sonmjack/Downloads/age2 result_fam1/fam1_all_EPSP_young.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/fam1_all_EPSP_young.pkl', 'rb') as file:
         All_dy_list1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_nov/nov_all_EPSP_young.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_nov/nov_all_EPSP_young.pkl', 'rb') as file:
         All_dy_list2 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_EPSP_young.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_EPSP_young.pkl', 'rb') as file:
         All_dy_list3 = pickle.load(file)
 elif Type == 'Old':
     gene_list = gene_list_old
     fig, axes = plt.subplots(4, 1, figsize=(12, 24))
-    with open('/Users/sonmjack/Downloads/age10 result_fam1/fam1_all_EPSP.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1/fam1_all_EPSP.pkl', 'rb') as file:
         All_dy_list1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_nov/nov_all_EPSP.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_nov/nov_all_EPSP.pkl', 'rb') as file:
         All_dy_list2 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_EPSP.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_EPSP.pkl', 'rb') as file:
         All_dy_list3 = pickle.load(file)
 
 it = 0
@@ -394,10 +394,10 @@ for index in range(len(All_dy_list1)):
         pass
 
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'AD asymmetry for 3'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'AD asymmetry for 3'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'AD asymmetry for 3'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'AD asymmetry for 3'+'.jpg')
     plt.close()
 
 
@@ -427,10 +427,10 @@ for index in range(len(All_dy_list1)):
         sns.histplot(data=df1, x='Value', kde=True, alpha=0.5, bins=bins, ax=axes[it])
         it += 1
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'AD EPSP fam1r2'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'AD EPSP fam1r2'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'AD EPSP fam1r2'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'AD EPSP fam1r2'+'.jpg')
     plt.close()
 #%%
 if Type == 'Young':
@@ -459,10 +459,10 @@ for index in range(len(All_dy_list1)):
         it += 1
 
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'AD EPSP fam1'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'AD EPSP fam1'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'AD EPSP fam1'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'AD EPSP fam1'+'.jpg')
     plt.close()
 
 #%%
@@ -491,10 +491,10 @@ for index in range(len(All_dy_list1)):
         sns.histplot(data=df1, x='Value', kde=True, alpha=0.5, bins=bins, ax=axes[it])
         it += 1
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'AD EPSP nov'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'AD EPSP nov'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'AD EPSP nov'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'AD EPSP nov'+'.jpg')
     plt.close()
 
 #%%
@@ -545,10 +545,10 @@ for index in range(len(All_dy_list1)):
         type = 'AD'
         pass
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT asymmetry for 3'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT asymmetry for 3'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT asymmetry for 3'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT asymmetry for 3'+'.jpg')
     plt.close()
 
 #%%
@@ -578,10 +578,10 @@ for index in range(len(All_dy_list1)):
         sns.histplot(data=df1, x='Value', kde=True, alpha=0.5, bins=bins, ax=axes[it])
         it += 1
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT EPSP fam1r2'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT EPSP fam1r2'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT EPSP fam1r2'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT EPSP fam1r2'+'.jpg')
     plt.close()
 #%%
 if Type == 'Young':
@@ -610,10 +610,10 @@ for index in range(len(All_dy_list1)):
         sns.histplot(data=df1, x='Value', kde=True, alpha=0.5, bins=bins, ax=axes[it])
         it += 1
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT EPSP fam1'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT EPSP fam1'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT EPSP fam1'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT EPSP fam1'+'.jpg')
     plt.close()
 #%%
 if Type == 'Young':
@@ -643,10 +643,10 @@ for index in range(len(All_dy_list1)):
         it += 1
 
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT EPSP nov'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT EPSP nov'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT EPSP nov'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT EPSP nov'+'.jpg')
     plt.close()
 
 
@@ -682,10 +682,10 @@ for index in range(len(All_dy_list1)):
         it += 1
 
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1r2'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1r2'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1r2'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1r2'+'.jpg')
     plt.close()
 
 
@@ -719,10 +719,10 @@ for index in range(len(All_dy_list1)):
         axes[it].spines['right'].set_visible(False)
         it += 1
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1'+'.jpg')
     plt.close()
 
 #%%
@@ -757,10 +757,10 @@ for index in range(len(All_dy_list1)):
         it += 1
 
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F nov'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F nov'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F nov'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F nov'+'.jpg')
     plt.close()
 
 
@@ -769,13 +769,13 @@ from PIL import Image
 
 # 图像文件路径
 if Type == 'Young':
-    image_files = ['/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1.jpg',
-                   '/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F nov.jpg',
-                   '/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1r2.jpg']
+    image_files = ['/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F nov.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1r2.jpg']
 if Type == 'Old':
-    image_files = ['/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1.jpg',
-                   '/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F nov.jpg',
-                   '/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1r2.jpg']
+    image_files = ['/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F nov.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'WT egenEPSP_F fam1r2.jpg']
 # 打开图像并放入列表
 images = [Image.open(image) for image in image_files]
 
@@ -794,9 +794,9 @@ for image in images:
 
 # 保存新图像
 if Type == 'Young':
-    new_image.save('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/combined_egenF_WT.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/combined_egenF_WT.jpg')
 if Type == 'Old':
-    new_image.save('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/combined_egenF_WT.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/combined_egenF_WT.jpg')
 
 
 #%%
@@ -805,20 +805,20 @@ Type = 'Old'
 if Type == 'Young':
     gene_list = gene_list_young
     fig, axes = plt.subplots(11, 1, figsize=(12, 66))
-    with open('/Users/sonmjack/Downloads/age2 result_fam1/fam1_signal_corr_WT', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/fam1_signal_corr_WT', 'rb') as file:
         All_sc_fam1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_nov/nov_signal_corr_WT', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_nov/nov_signal_corr_WT', 'rb') as file:
         All_sc_nov = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_signal_corr_WT', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_signal_corr_WT', 'rb') as file:
         All_sc_fam1r2 = pickle.load(file)
 elif Type == 'Old':
     gene_list = gene_list_old
     fig, axes = plt.subplots(4, 1, figsize=(12, 24))
-    with open('/Users/sonmjack/Downloads/age10 result_fam1/fam1_signal_corr_AD' ,'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1/fam1_signal_corr_AD' ,'rb') as file:
         All_sc_fam1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_nov/nov_signal_corr_AD', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_nov/nov_signal_corr_AD', 'rb') as file:
         All_sc_nov = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_signal_corr_AD', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_signal_corr_AD', 'rb') as file:
         All_sc_fam1r2 = pickle.load(file)
 
 it = 0
@@ -839,10 +839,10 @@ for index in range(len(All_sc_fam1)):
     axes[it].set_xlim(left=0)
     it += 1
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT SC fam1r2'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT SC fam1r2'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'AD SC fam1r2'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'AD SC fam1r2'+'.jpg')
     plt.close()
 
 
@@ -865,10 +865,10 @@ for index in range(len(All_sc_fam1)):
     axes[it].set_xlim(left=0)
     it += 1
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT SC fam1'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT SC fam1'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'AD SC fam1'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'AD SC fam1'+'.jpg')
     plt.close()
 
 
@@ -891,10 +891,10 @@ for index in range(len(All_sc_fam1)):
     axes[it].set_xlim(left=0)
     it += 1
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'WT SC nov'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'WT SC nov'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'AD SC nov'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'AD SC nov'+'.jpg')
     plt.close()
 
 

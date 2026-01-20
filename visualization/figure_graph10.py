@@ -13,18 +13,18 @@ import pandas as pd
 import scipy.stats as stats
 
 #%%
-with open('/Users/sonmjack/Downloads/simon_paper/gene_list_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/gene_list_age10.pkl', 'rb') as file:
     gene_list_10 = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_fam_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_fam_age10.pkl', 'rb') as file:
     dy_list_fam1 = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_Nov_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_Nov_age10.pkl', 'rb') as file:
     dy_list_nov = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_famr2_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_famr2_age10.pkl', 'rb') as file:
     dy_list_famr2 = pickle.load(file)
-with open('/Users/sonmjack/Downloads/simon_paper/fam1r2_neuron_list_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1r2_neuron_list_age10.pkl', 'rb') as file:
     neuron_spike = pickle.load(file)
 #%%
 test = dy_list_famr2[4]
@@ -323,7 +323,7 @@ plt.show()
     # #t, p = stats.ttest_ind(dy_list[i], dy_list_shuffled[i])
     # t, p = stats.ttest_ind(list(degree_values_p1), list(degree_values_p2))
     # plt.text(0.15, 0.9, f'p_value = {p:.4f}', transform=plt.gca().transAxes, fontsize=7)
-    # plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/graph/' + 'weak connection' + f'-{type}-' + f'{i}.jpg')
+    # plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/graph/' + 'weak connection' + f'-{type}-' + f'{i}.jpg')
     # plt.close()
 
 #%%

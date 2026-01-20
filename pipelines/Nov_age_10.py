@@ -10,121 +10,121 @@ import numpy as np
 
 import mat73
 
-#%% dataloader
-mat_data  = mat73.loadmat('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_timeseries.mat')
-#%%
-spike_time_all = mat_data['nov_df_f']
-mask = mat_data['mask']
-age = mat_data['ageMOS']
-be_f = mat_data['expname'][:]
-spike_sum = mat_data['nov_spikes']
-#%%
-be_data = scipy.io.loadmat('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_trackdata.mat')
-import h5py
-type_array = h5py.File('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_timeseries.mat')
-be_phi_sum = be_data['nov_phi']
-gene = type_array ['genotype'][:,:].T
-
-#spike_sum = mat_data['fam1_spikes']
-mat_label = np.zeros((gene.shape[0],4))
-
-#be_phi_sum = be_data['fam1_phi']
-
-
-#%%Trigger:age and type
-# exist conflict of index, so just use part of data
-# for i in range(gene.shape[0]):#gene.shape[0] 969,3236
-#     if i == gene.shape[0]-1:
-#         mat_label[i, 0] = i
-#         mat_label[i, 1] = gene[i, 0]
-#         mat_label[i, 2] = age[i]
-#         mat_label[i, 3] = len(spike_sum[i][0])
-#         break
-#     if i ==0:
-#         mat_label[i,0] = 0.1
-#         mat_label[i, 1] = gene[i, 0]
-#         mat_label[i, 2] = age[i]
-#         mat_label[i, 3] = len(spike_sum[i][0])
-#     else:
-#         if len(spike_sum[i][0]) != len(spike_sum[i+1][0])or len(spike_sum[i][0]) != len(spike_sum[i-1][0]):
-#         #if ex_index[i] != ex_index[i + 1]:
-#             mat_label[i, 0] = i
-#             mat_label[i, 1] = gene[i, 0]
-#             mat_label[i, 2] = age[i]
-#             mat_label[i, 3] = len(spike_sum[i][0])
-#         elif be_f[i] != be_f[i+1] or be_f[i] != be_f[i-1]:
-#             mat_label[i, 0] = i
-#             mat_label[i, 1] = gene[i, 0]
-#             mat_label[i, 2] = age[i]
-#             mat_label[i, 3] = len(spike_sum[i][0])
-#         else:
-#             mat_label[i,0] = 0
+# #%% COMMENTED OUT: dataloader - pickle files already exist
+# mat_data  = mat73.loadmat('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_timeseries.mat')
+# #%%
+# spike_time_all = mat_data['nov_df_f']
+# mask = mat_data['mask']
+# age = mat_data['ageMOS']
+# be_f = mat_data['expname'][:]
+# spike_sum = mat_data['nov_spikes']
+# #%%
+# be_data = scipy.io.loadmat('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_trackdata.mat')
+# import h5py
+# type_array = h5py.File('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_timeseries.mat')
+# be_phi_sum = be_data['nov_phi']
+# gene = type_array ['genotype'][:,:].T
 #
-# mat_trigger = mat_label[mat_label[:,0]!=0]
-# path = '/Users/sonmjack/Downloads/simon_paper/shengyuan_trigger_nov.npy'
-# np.save(path,mat_trigger)
-
-#%%
-mat_trigger = np.load('/Users/sonmjack/Downloads/simon_paper/shengyuan_trigger_nov.npy')
-#%%  age older  fam1
-neuron_spike = []
-neuron_time_list = []
-be_list = []
-gene_list = []
-age_list = []
-mutual_list = []
-for i in range(0,10,2):#0, len(mat_trigger), 2
-    neuron_times = []
-    if i == len(mat_trigger):
-        break
-    else:
-        # cell_df = spike_time_all[int(mat_trigger[i, 0]):int(mat_trigger[i + 1, 0])]
-        # num_rows = len(cell_df)
-        # for j in range(num_rows):
-        #     window_size = 50
-        #     # 计算移动平均值
-        #     smooth_data = np.convolve(cell_df[j][0], np.ones(window_size) / window_size, mode='valid')
-        #     neuron_times.append(smooth_data)
-        # neuron_time_list.append(neuron_times)
-        cell_array = spike_sum[int(mat_trigger[i,0]):int(mat_trigger[i + 1,0])]
-        num_rows = len(cell_array)
-        num_column = len(cell_array[0][0])
-        neurons = np.zeros((num_rows, num_column))
-
-        # 长度不一致需要截断处理然后再看
-        for j in range(num_rows):
-            neurons[j, :] = (cell_array[j][0] * 10).astype(int)
-        neuron_spike.append(neurons)
-        # 索引原始的be_list
-        # be_list.append(be_phi_sum[int(i/2),0])
-        # gene_list.append(mat_trigger[i,1])
-        # age_list.append(mat_trigger[i,2])
-import pickle
-# with open('/Users/sonmjack/Downloads/simon_paper/nov_df_f_list_age10.pkl', 'wb') as file:
-#     pickle.dump(neuron_time_list, file)
-
-with open('/Users/sonmjack/Downloads/simon_paper/nov_neuron_list_age10.pkl', 'wb') as file:
-    pickle.dump(neuron_spike, file)
+# #spike_sum = mat_data['fam1_spikes']
+# mat_label = np.zeros((gene.shape[0],4))
+#
+# #be_phi_sum = be_data['fam1_phi']
+#
+#
+# #%%Trigger:age and type
+# # exist conflict of index, so just use part of data
+# # for i in range(gene.shape[0]):#gene.shape[0] 969,3236
+# #     if i == gene.shape[0]-1:
+# #         mat_label[i, 0] = i
+# #         mat_label[i, 1] = gene[i, 0]
+# #         mat_label[i, 2] = age[i]
+# #         mat_label[i, 3] = len(spike_sum[i][0])
+# #         break
+# #     if i ==0:
+# #         mat_label[i,0] = 0.1
+# #         mat_label[i, 1] = gene[i, 0]
+# #         mat_label[i, 2] = age[i]
+# #         mat_label[i, 3] = len(spike_sum[i][0])
+# #     else:
+# #         if len(spike_sum[i][0]) != len(spike_sum[i+1][0])or len(spike_sum[i][0]) != len(spike_sum[i-1][0]):
+# #         #if ex_index[i] != ex_index[i + 1]:
+# #             mat_label[i, 0] = i
+# #             mat_label[i, 1] = gene[i, 0]
+# #             mat_label[i, 2] = age[i]
+# #             mat_label[i, 3] = len(spike_sum[i][0])
+# #         elif be_f[i] != be_f[i+1] or be_f[i] != be_f[i-1]:
+# #             mat_label[i, 0] = i
+# #             mat_label[i, 1] = gene[i, 0]
+# #             mat_label[i, 2] = age[i]
+# #             mat_label[i, 3] = len(spike_sum[i][0])
+# #         else:
+# #             mat_label[i,0] = 0
+# #
+# # mat_trigger = mat_label[mat_label[:,0]!=0]
+# # path = '/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_nov.npy'
+# # np.save(path,mat_trigger)
+#
+# #%%
+# mat_trigger = np.load('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_nov.npy')
+# #%%  age older  fam1
+# neuron_spike = []
+# neuron_time_list = []
+# be_list = []
+# gene_list = []
+# age_list = []
+# mutual_list = []
+# for i in range(0,10,2):#0, len(mat_trigger), 2
+#     neuron_times = []
+#     if i == len(mat_trigger):
+#         break
+#     else:
+#         # cell_df = spike_time_all[int(mat_trigger[i, 0]):int(mat_trigger[i + 1, 0])]
+#         # num_rows = len(cell_df)
+#         # for j in range(num_rows):
+#         #     window_size = 50
+#         #     # 计算移动平均值
+#         #     smooth_data = np.convolve(cell_df[j][0], np.ones(window_size) / window_size, mode='valid')
+#         #     neuron_times.append(smooth_data)
+#         # neuron_time_list.append(neuron_times)
+#         cell_array = spike_sum[int(mat_trigger[i,0]):int(mat_trigger[i + 1,0])]
+#         num_rows = len(cell_array)
+#         num_column = len(cell_array[0][0])
+#         neurons = np.zeros((num_rows, num_column))
+#
+#         # 长度不一致需要截断处理然后再看
+#         for j in range(num_rows):
+#             neurons[j, :] = (cell_array[j][0] * 10).astype(int)
+#         neuron_spike.append(neurons)
+#         # 索引原始的be_list
+#         # be_list.append(be_phi_sum[int(i/2),0])
+#         # gene_list.append(mat_trigger[i,1])
+#         # age_list.append(mat_trigger[i,2])
+# import pickle
+# # with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/nov_df_f_list_age10.pkl', 'wb') as file:
+# #     pickle.dump(neuron_time_list, file)
+#
+# with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/nov_neuron_list_age10.pkl', 'wb') as file:
+#     pickle.dump(neuron_spike, file)
 #%% save data
 # import pickle
-# with open('/Users/sonmjack/Downloads/simon_paper/nov_neuron_list_age10.pkl', 'wb') as file:
+# with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/nov_neuron_list_age10.pkl', 'wb') as file:
 #     pickle.dump(neuron_spike, file)
 #
-# with open('/Users/sonmjack/Downloads/simon_paper/nov_ex_index_age10.pkl', 'wb') as file:
+# with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/nov_ex_index_age10.pkl', 'wb') as file:
 #     pickle.dump(ex_index, file)
 #
-# with open('/Users/sonmjack/Downloads/simon_paper/nov_mutual_list_age10.pkl', 'wb') as file:
+# with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/nov_mutual_list_age10.pkl', 'wb') as file:
 #     pickle.dump(mutual_list, file)
 
 #%%
 import pickle
-with open('/Users/sonmjack/Downloads/simon_paper/nov_neuron_list_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/nov_neuron_list_age10.pkl', 'rb') as file:
     neuron_spike = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/nov_ex_index_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/nov_ex_index_age10.pkl', 'rb') as file:
     ex_index = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/nov_mutual_list_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/nov_mutual_list_age10.pkl', 'rb') as file:
     mutual_list = pickle.load(file)
 
 #%%
@@ -209,10 +209,10 @@ for k in range(len(neuron_spike)):
 
 
 #%%
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_Nov_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_Nov_age10.pkl', 'rb') as file:
     dy_list = pickle.load(file)
 #%%
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_Nov_age10.pkl', 'wb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_Nov_age10.pkl', 'wb') as file:
     pickle.dump(dy_list, file)
 #%%
 def embeding_color(neuron,be,index):
@@ -241,7 +241,7 @@ for k in range(len(neuron_spike)):
     sns.heatmap(dy_r,vmin=0, vmax=1)
     plt.title("Strength matrix")
     plt.xlabel("Neurons")
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_nov/' + 'dynamic' + f'-{type}-' + f'{k}.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_nov/' + 'dynamic' + f'-{type}-' + f'{k}.jpg')
     # 可视化降维结果
     fig = plt.figure(figsize=(8, 8))
     ax = fig.add_subplot(111, projection='3d')
@@ -249,7 +249,7 @@ for k in range(len(neuron_spike)):
 
     ax.set_title('Modified locally linear embedding of dynamic distence'+f'-{type}')
     fig.colorbar(p)
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_nov/'+'dynamic distence'+f'-{type}-'+f'{k}.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_nov/'+'dynamic distence'+f'-{type}-'+f'{k}.jpg')
 
 
 #%% shuffled data comparing
@@ -272,10 +272,10 @@ for k in range(len(neuron_spike)):
 
 
 #%%
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_Nov_age10_shuffled.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_Nov_age10_shuffled.pkl', 'rb') as file:
     dy_list_shuffled = pickle.load(file)
 #%%
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_Nov_age10_shuffled.pkl', 'wb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_Nov_age10_shuffled.pkl', 'wb') as file:
     pickle.dump(dy_list_shuffled, file)
 #%%
 def pre_process(data):
