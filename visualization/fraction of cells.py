@@ -193,7 +193,8 @@ for index in range(len(All_tuning_curve1)):
         axes[it].set_ylabel('Fraction of cells', fontsize=13)
         axes[it].set_title('Global tuning curves for three groups No.' + f'{index} {type}')
         axes[it].spines['top'].set_visible(False)
-        axes[it].spines['right'].set_visible(False)        df = pd.concat([df1, df2, df3])
+        axes[it].spines['right'].set_visible(False)
+        df = pd.concat([df1, df2, df3])
         # 绘制曲线图
         sns.lineplot(data=df, x='Location',
                      y='Value', hue='Group', style='Group', markers=True, dashes=False,ax=axes[it])
