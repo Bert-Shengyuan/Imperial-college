@@ -12,16 +12,16 @@ import mat73
 import pickle
 
 #%%
-with open('/Users/sonmjack/Downloads/simon_paper/gene_list_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/gene_list_age10.pkl', 'rb') as file:
     gene_list_10 = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_fam_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_fam_age10.pkl', 'rb') as file:
     dy_list_fam1 = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_Nov_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_Nov_age10.pkl', 'rb') as file:
     dy_list_nov = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_famr2_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_famr2_age10.pkl', 'rb') as file:
     dy_list_famr2 = pickle.load(file)
 
 #%%
@@ -139,16 +139,16 @@ plt.xlabel("5xFAD age > 6")
 plt.show()
 
 #%%
-with open('/Users/sonmjack/Downloads/simon_paper/gene_list_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/gene_list_age2.pkl', 'rb') as file:
     gene_list_2 = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_fam_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_fam_age2.pkl', 'rb') as file:
     dy_list_fam1 = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_Nov_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_Nov_age2.pkl', 'rb') as file:
     dy_list_nov = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/dynamic_list_famr2_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/dynamic_list_famr2_age2.pkl', 'rb') as file:
     dy_list_famr2 = pickle.load(file)
 
 #%%

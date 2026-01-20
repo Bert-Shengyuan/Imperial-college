@@ -11,7 +11,7 @@ import numpy as np
 import mat73
 
 # #%% dataloader
-# mat_data  = mat73.loadmat('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_timeseries.mat')
+# mat_data  = mat73.loadmat('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_timeseries.mat')
 #%%
 # age = mat_data['ageMOS']
 # mask = mat_data['masks'][:,:,:]
@@ -20,24 +20,24 @@ import mat73
 # #spike_sum = mat_data['nov_spikes']
 # spike_sum = mat_data['fam1_spikes']
 # include = mat_data['include']
-# with open('/Users/sonmjack/Downloads/simon_paper/fam1_neuron_list_age2.pkl', 'wb') as file:
+# with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1_neuron_list_age2.pkl', 'wb') as file:
 #     pickle.dump(neuron_spike, file)
 #%%
-mat_trigger = np.load('/Users/sonmjack/Downloads/simon_paper/shengyuan_trigger_fam1.npy')
+mat_trigger = np.load('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_fam1.npy')
 import pickle
-with open('/Users/sonmjack/Downloads/simon_paper/fam1_neuron_list_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1_neuron_list_age2.pkl', 'rb') as file:
     neuron_spike = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/fam1_ex_index_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1_ex_index_age2.pkl', 'rb') as file:
     ex_index = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/fam1_include_list_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1_include_list_age2.pkl', 'rb') as file:
     include_list = pickle.load(file)
 
 #%%
-be_data = scipy.io.loadmat('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_trackdata.mat')
+be_data = scipy.io.loadmat('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_trackdata.mat')
 import h5py
-type_array = h5py.File('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_timeseries.mat')
+type_array = h5py.File('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_timeseries.mat')
 gene = type_array ['genotype'][:,:].T
 mat_label = np.zeros((gene.shape[0],4))
 # be_phi_sum = be_data['nov_phi']
@@ -64,6 +64,6 @@ for i in range(10,46,2):#0, len(mat_trigger), 2
         # include_list.append(include_i)
         # 索引原始的be_list
 #
-# with open('/Users/sonmjack/Downloads/simon_paper/fam1_include_list_age2.pkl', 'wb') as file:
+# with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1_include_list_age2.pkl', 'wb') as file:
 #     pickle.dump(include_list, file)
 

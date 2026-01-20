@@ -29,9 +29,9 @@ from scipy import stats
 import pandas as pd
 import  networkx as nx
 
-type_array = h5py.File('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_timeseries.mat')
-be_data = scipy.io.loadmat('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_trackdata.mat')
-mat_trigger = np.load('/Users/sonmjack/Downloads/simon_paper/shengyuan_trigger_fam1.npy')
+type_array = h5py.File('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_timeseries.mat')
+be_data = scipy.io.loadmat('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_trackdata.mat')
+mat_trigger = np.load('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_fam1.npy')
 
 gene = type_array['genotype'][:, :].T
 
@@ -117,7 +117,7 @@ for i in range(0, 10, 2):  # 0, len(mat_trigger), 2
     be_y_list_old_fam1r2.append(be_phi_sum_fam1r2[int(i / 2), 0])
     gene_list_old.append(mat_trigger[i, 1])
 del be_data, be_phi_sum_fam1, be_phi_sum_nov, be_phi_sum_fam1r2
-with open('/Users/sonmjack/Downloads/age2 result_fam1/fam1_all_Smask.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/fam1_all_Smask.pkl', 'rb') as file:
     mask = pickle.load(file)
 
 #%%
@@ -382,11 +382,11 @@ def draw_pic(ax, degree, legend, color):
 Type = 'Young'
 if Type == 'Young':
     gene_list = gene_list_young
-    with open('/Users/sonmjack/Downloads/age2 result_fam1/fam1_all_EPSP_young.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/fam1_all_EPSP_young.pkl', 'rb') as file:
         dy_list_fam1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_nov/nov_all_EPSP_young.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_nov/nov_all_EPSP_young.pkl', 'rb') as file:
         dy_list_nov = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_EPSP_young.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_EPSP_young.pkl', 'rb') as file:
         dy_list_famr2 = pickle.load(file)
 
 cluster_number = []
@@ -483,11 +483,11 @@ for index in range(len(dy_list_fam1)):  #(9,10)# len(dy_list)
     if gene_list_young[index] == 119:
         type = 'wild type'
 
-        with open('/Users/sonmjack/Downloads/age2 result_fam1/fam1_Signal_Markov_' + str(z) + '.pkl', 'rb') as file:
+        with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/fam1_Signal_Markov_' + str(z) + '.pkl', 'rb') as file:
             all_results_fam1 = pickle.load(file)
-        with open('/Users/sonmjack/Downloads/age2 result_nov/nov_Signal_Markov_' + str(z) + '.pkl', 'rb') as file:
+        with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_nov/nov_Signal_Markov_' + str(z) + '.pkl', 'rb') as file:
             all_results_nov = pickle.load(file)
-        with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_Signal_Markov_' + str(z) + '.pkl',
+        with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_Signal_Markov_' + str(z) + '.pkl',
                   'rb') as file:
             all_results_famr2 = pickle.load(file)
 
@@ -655,8 +655,8 @@ plt.ylabel("Clustering coefficient (Between subgraph)",fontsize=15)
 plt.tick_params(axis='y', labelsize=15)
 plt.tick_params(axis='x', labelsize=15)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + 'Whole Clustering coefficient wt' + '.png',dpi =800)
-#plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + 'Whole asy corr AD' + '.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + 'Whole Clustering coefficient wt' + '.png',dpi =800)
+#plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + 'Whole asy corr AD' + '.svg')
 plt.show()
 
 
@@ -682,8 +682,8 @@ plt.ylabel(f'{type} (Between subgraph)',fontsize=15)
 plt.tick_params(axis='y', labelsize=15)
 plt.tick_params(axis='x', labelsize=15)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + f'{type} wt' + '.png',dpi =800)
-#plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + 'Whole asy corr AD' + '.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + f'{type} wt' + '.png',dpi =800)
+#plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + 'Whole asy corr AD' + '.svg')
 plt.show()
 
 #%%
@@ -709,8 +709,8 @@ plt.ylabel(f'{type} (Between subgraph)',fontsize=15)
 plt.tick_params(axis='y', labelsize=15)
 plt.tick_params(axis='x', labelsize=15)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + f'{type} wt' + '.png',dpi =800)
-#plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + 'Whole asy corr AD' + '.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + f'{type} wt' + '.png',dpi =800)
+#plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + 'Whole asy corr AD' + '.svg')
 plt.show()
 
 #%%
@@ -756,8 +756,8 @@ plt.ylabel(f'{type} (Between subgraph)',fontsize=15)
 plt.tick_params(axis='y', labelsize=15)
 plt.tick_params(axis='x', labelsize=15)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + f'{type} wt' + '.png',dpi =800)
-#plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + 'Whole asy corr AD' + '.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + f'{type} wt' + '.png',dpi =800)
+#plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + 'Whole asy corr AD' + '.svg')
 plt.show()
 
 #%%
@@ -783,8 +783,8 @@ plt.ylabel(f'{type} (Between subgraph)',fontsize=15)
 plt.tick_params(axis='y', labelsize=15)
 plt.tick_params(axis='x', labelsize=15)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + f'{type} wt' + '.png',dpi =800)
-#plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + 'Whole asy corr AD' + '.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + f'{type} wt' + '.png',dpi =800)
+#plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + 'Whole asy corr AD' + '.svg')
 plt.show()
 
 #%%
@@ -810,8 +810,8 @@ plt.ylabel(f'{type} (Between subgraph)',fontsize=15)
 plt.tick_params(axis='y', labelsize=15)
 plt.tick_params(axis='x', labelsize=15)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + f'{type} wt' + '.png',dpi =800)
-#plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + 'Whole asy corr AD' + '.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + f'{type} wt' + '.png',dpi =800)
+#plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + 'Whole asy corr AD' + '.svg')
 plt.show()
 
 #%%
@@ -837,6 +837,6 @@ plt.ylabel(f'{type} (Between subgraph)',fontsize=15)
 plt.tick_params(axis='y', labelsize=15)
 plt.tick_params(axis='x', labelsize=15)
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + f'{type} wt' + '.png',dpi =800)
-#plt.savefig('/Users/sonmjack/Downloads/figure_compare/' + 'Whole asy corr AD' + '.svg')
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + f'{type} wt' + '.png',dpi =800)
+#plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/' + 'Whole asy corr AD' + '.svg')
 plt.show()

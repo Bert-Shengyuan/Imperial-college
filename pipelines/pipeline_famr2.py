@@ -34,33 +34,33 @@ Color_Code = [*Color_Code1, *list_color]
 
 #%%
 ## Load age 2
-mat_trigger = np.load('/Users/sonmjack/Downloads/simon_paper/shengyuan_trigger_fam1r2.npy')
+mat_trigger = np.load('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_fam1r2.npy')
 import pickle
 
-with open('/Users/sonmjack/Downloads/simon_paper/fam1r2_neuron_list_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1r2_neuron_list_age2.pkl', 'rb') as file:
     neuron_spike_young = pickle.load(file)
-with open('/Users/sonmjack/Downloads/simon_paper/fam1_include_list_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1_include_list_age2.pkl', 'rb') as file:
     include_list_young = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/fam1r2_neuron_list_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1r2_neuron_list_age10.pkl', 'rb') as file:
     neuron_spike_old = pickle.load(file)
-with open('/Users/sonmjack/Downloads/simon_paper/fam1_old_include_list_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1_old_include_list_age2.pkl', 'rb') as file:
     include_list_old = pickle.load(file)
 ## Load age 10
 
 
-with open('/Users/sonmjack/Downloads/simon_paper/fam1r2_df_f_list_age2.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1r2_df_f_list_age2.pkl', 'rb') as file:
     neuron_time_list_young = pickle.load(file)
-with open('/Users/sonmjack/Downloads/simon_paper/fam1r2_df_f_list_age10.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1r2_df_f_list_age10.pkl', 'rb') as file:
     neuron_time_list_old = pickle.load(file)
 
-with open('/Users/sonmjack/Downloads/simon_paper/mask_fam1.pkl', 'rb') as file:
+with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/mask_fam1.pkl', 'rb') as file:
     mask = pickle.load(file)
 
-be_data = scipy.io.loadmat('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_trackdata.mat')
+be_data = scipy.io.loadmat('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_trackdata.mat')
 import h5py
 
-type_array = h5py.File('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_timeseries.mat')
+type_array = h5py.File('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_timeseries.mat')
 
 gene = type_array['genotype'][:, :].T
 # mat_label = np.zeros((gene.shape[0],4))
@@ -266,31 +266,31 @@ for index in range(len(neuron_spike_all)):
     print('Finish '+f'{index}')
 #%%
 if type == 'Young':
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_spike.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_spike.pkl', 'wb') as file:
         pickle.dump(All_spike, file)
 
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_laps.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_laps.pkl', 'wb') as file:
         pickle.dump(All_laps, file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_mask.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_mask.pkl', 'wb') as file:
         pickle.dump(All_mask, file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_df_f.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_df_f.pkl', 'wb') as file:
         pickle.dump(All_df_f, file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_spike_index.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_spike_index.pkl', 'wb') as file:
         pickle.dump(All_spike_index, file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_tuning curve.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_tuning curve.pkl', 'wb') as file:
         pickle.dump(All_tuning_curve, file)
 elif type == 'Old':
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_spike.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_spike.pkl', 'wb') as file:
         pickle.dump(All_spike, file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_laps.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_laps.pkl', 'wb') as file:
         pickle.dump(All_laps, file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_mask.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_mask.pkl', 'wb') as file:
         pickle.dump(All_mask, file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_df_f.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_df_f.pkl', 'wb') as file:
         pickle.dump(All_df_f, file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_spike_index.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_spike_index.pkl', 'wb') as file:
         pickle.dump(All_spike_index, file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_tuning curve.pkl', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_tuning curve.pkl', 'wb') as file:
         pickle.dump(All_tuning_curve, file)
 
 

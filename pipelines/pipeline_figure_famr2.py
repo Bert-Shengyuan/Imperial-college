@@ -12,38 +12,38 @@ import pandas as pd
 Type = 'Young'
 #Type = 'Old'
 if Type == 'Young':
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_S_spike.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_S_spike.pkl', 'rb') as file:
         All_spike =  pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_laps.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_laps.pkl', 'rb') as file:
         All_laps = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1/fam1_all_Smask.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/fam1_all_Smask.pkl', 'rb') as file:
         All_mask = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_S_df_f.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_S_df_f.pkl', 'rb') as file:
         All_df_f = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_S_index.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_S_index.pkl', 'rb') as file:
         All_spike_index = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve = pickle.load(file)
 
 elif Type == 'Old':
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_S_spike.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_S_spike.pkl', 'rb') as file:
         All_spike =  pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_laps.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_laps.pkl', 'rb') as file:
         All_laps = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1/fam1_all_Smask.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1/fam1_all_Smask.pkl', 'rb') as file:
         All_mask = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_S_df_f.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_S_df_f.pkl', 'rb') as file:
         All_df_f = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_S_index.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_S_index.pkl', 'rb') as file:
         All_spike_index = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve = pickle.load(file)
 
-be_data = scipy.io.loadmat('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_trackdata.mat')
-mat_trigger = np.load('/Users/sonmjack/Downloads/simon_paper/shengyuan_trigger_fam1.npy')
+be_data = scipy.io.loadmat('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_trackdata.mat')
+mat_trigger = np.load('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_fam1.npy')
 import h5py
 
-type_array = h5py.File('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_timeseries.mat')
+type_array = h5py.File('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_timeseries.mat')
 
 gene = type_array['genotype'][:, :].T
 # mat_label = np.zeros((gene.shape[0],4))
@@ -186,7 +186,7 @@ cbar.ax.tick_params(labelsize=24)
 
 # Adjust the plot layout
 plt.tight_layout()
-plt.savefig('/Users/sonmjack/Downloads/figure_compare/firing rate map/' + str(index) + '_young_famr2_'+str(neuron)+'.png',dpi=800)
+plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/figure_compare/firing rate map/' + str(index) + '_young_famr2_'+str(neuron)+'.png',dpi=800)
 plt.show()
 # fig, ax = plt.subplots(figsize=(8, 6))
 # # Create the heatmap plot
@@ -232,9 +232,9 @@ for index in range(len(All_spike)):
     axes[1].set_ylabel('Spike count', fontsize=13)
 
     if Type == 'Young':
-        plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/tuning_curve_new/'+f'{type}_{index}'+'.jpg')
+        plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/tuning_curve_new/'+f'{type}_{index}'+'.jpg')
     elif Type =='Old':
-        plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/tuning_curve_new/' + f'{type}_{index}' + '.jpg')
+        plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/tuning_curve_new/' + f'{type}_{index}' + '.jpg')
     plt.close()
 
 #%%
@@ -263,21 +263,21 @@ for index in range(len(All_spike)):
 #     All_angle_noise.append(res_angle_list)
 #     All_noise_corr.append(res_noise)
 # if Type == 'Young':
-#     with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_angle_noise.pkl', 'wb') as file:
+#     with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_angle_noise.pkl', 'wb') as file:
 #         pickle.dump(All_angle_noise, file)
-#     with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_noise_corr.pkl', 'wb') as file:
+#     with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_noise_corr.pkl', 'wb') as file:
 #         pickle.dump(All_noise_corr, file)
 # elif Type =='Old':
-#     with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_angle_noise.pkl', 'wb') as file:
+#     with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_angle_noise.pkl', 'wb') as file:
 #         pickle.dump(All_angle_noise, file)
-#     with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_noise_corr.pkl', 'wb') as file:
+#     with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_noise_corr.pkl', 'wb') as file:
 #         pickle.dump(All_noise_corr, file)
 #%%
 if Type == 'Young':
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_noise_corr.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_noise_corr.pkl', 'rb') as file:
         All_noise_corr = pickle.load(file)
 elif Type =='Old':
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_noise_corr.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_noise_corr.pkl', 'rb') as file:
         All_noise_corr = pickle.load(file)
 #%%
 print('Signal corr wt')
@@ -311,14 +311,14 @@ for index in range(len(All_spike)):
         type = 'AD'
         pass
 if Type == 'Young':
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_signal_corr_WT', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_signal_corr_WT', 'wb') as file:
         pickle.dump(All_signal_corr_WT, file)
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/' + 'Whole signal corr' + '.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/' + 'Whole signal corr' + '.jpg')
     plt.close()
 elif Type == 'Old':
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_signal_corr_WT', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_signal_corr_WT', 'wb') as file:
         pickle.dump(All_signal_corr_WT, file)
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/' + 'Whole signal corr' + '.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/' + 'Whole signal corr' + '.jpg')
     plt.close()
 
 #%%
@@ -354,10 +354,10 @@ for index in range(len(All_tuning_curve)):
         type = 'AD'
         pass
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole tuning curve'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole tuning curve'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole tuning curve'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole tuning curve'+'.jpg')
     plt.close()
 
 
@@ -366,12 +366,12 @@ print('Whole noise corr wt')
 if Type == 'Young':
     gene_list = gene_list_young
     fig, axes = plt.subplots(11, 1, figsize=(8, 66))
-    with open('/Users/sonmjack/Downloads/age2 result_nov/nov_all_noise_corr.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_nov/nov_all_noise_corr.pkl', 'rb') as file:
         All_noise_corr = pickle.load(file)
 elif Type == 'Old':
     gene_list = gene_list_old
     fig, axes = plt.subplots(2, 1, figsize=(8, 12))
-    with open('/Users/sonmjack/Downloads/age10 result_nov/nov_all_noise_corr.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_nov/nov_all_noise_corr.pkl', 'rb') as file:
         All_noise_corr = pickle.load(file)
 it = 0
 for index in range(len(All_noise_corr)):
@@ -387,10 +387,10 @@ for index in range(len(All_noise_corr)):
         type = 'AD'
         pass
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/noise_corr/'+'Whole noise corr'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/noise_corr/'+'Whole noise corr'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/noise_corr/'+'Whole noise corr'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/noise_corr/'+'Whole noise corr'+'.jpg')
     plt.close()
 
 #%%
@@ -495,10 +495,10 @@ elif Type == 'Old':
 #     print('----------------------------------------------------------------')
 #     print('Finished No.' + f'{i} mouse')
 # if Type == 'Young':
-#     with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_EPSP_young.pkl', 'wb') as file:
+#     with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_EPSP_young.pkl', 'wb') as file:
 #         pickle.dump(All_dy_list, file)
 # elif Type == 'Old':
-#     with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_EPSP.pkl', 'wb') as file:
+#     with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_EPSP.pkl', 'wb') as file:
 #         pickle.dump(All_dy_list, file)
 
 #%%
@@ -507,15 +507,15 @@ elif Type == 'Old':
 # te = np.array(dy_sum)
 # mean = np.sum(te,axis=0)
 # sns.heatmap(All_dy_list[-1], cmap='viridis',vmax=1)
-# plt.savefig('/Users/sonmjack/Downloads/age2 result_nov/signal_corr/'+'Whole EPSP whole sample'+'.jpg')
+# plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_nov/signal_corr/'+'Whole EPSP whole sample'+'.jpg')
 # plt.close()
 
 #%%
 if Type == 'Young':
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_all_EPSP_young.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_all_EPSP_young.pkl', 'rb') as file:
         All_dy_list = pickle.load(file)
 elif Type == 'Old':
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_all_EPSP.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_all_EPSP.pkl', 'rb') as file:
         All_dy_list = pickle.load(file)
 
 #这里需要归一化，且把主对角线为0，然后算egenvalue 和egenvector
@@ -540,10 +540,10 @@ for index in range(len(All_dy_list)):
         type = 'AD'
         pass
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole EPSP'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole EPSP'+'.jpg')
     plt.close()
 if Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole EPSP'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole EPSP'+'.jpg')
     plt.close()
 # plt.close()
 # plt.figure(figsize=(8, 6))
@@ -555,15 +555,15 @@ from PIL import Image
 
 # 图像文件路径
 if Type == 'Young':
-    image_files = ['/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole tuning curve.jpg',
-                   '/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole signal corr.jpg',
-                   '/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole EPSP.jpg',
-                   '/Users/sonmjack/Downloads/age2 result_fam1r2/noise_corr/'+'Whole noise corr.jpg']
+    image_files = ['/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole tuning curve.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole signal corr.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole EPSP.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/noise_corr/'+'Whole noise corr.jpg']
 if Type == 'Old':
-    image_files = ['/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole tuning curve.jpg',
-                   '/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole signal corr.jpg',
-                   '/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole EPSP.jpg',
-                   '/Users/sonmjack/Downloads/age10 result_fam1r2/noise_corr/'+'Whole noise corr.jpg']
+    image_files = ['/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole tuning curve.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole signal corr.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole EPSP.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/noise_corr/'+'Whole noise corr.jpg']
 # 打开图像并放入列表
 images = [Image.open(image) for image in image_files]
 
@@ -582,9 +582,9 @@ for image in images:
 
 # 保存新图像
 if Type == 'Young':
-    new_image.save('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/combined_image_WT.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/combined_image_WT.jpg')
 if Type == 'Old':
-    new_image.save('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/combined_image_WT.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/combined_image_WT.jpg')
 #%%
 print('Signal corr AD')
 if Type == 'Young':
@@ -617,13 +617,13 @@ for index in range(len(All_spike)):
         type = 'wild type'
         pass
 if Type == 'Young':
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_signal_corr_AD', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_signal_corr_AD', 'wb') as file:
         pickle.dump(All_signal_corr_AD, file)
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole signal corr'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole signal corr'+'.jpg')
 elif Type == 'Old':
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_signal_corr_AD', 'wb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_signal_corr_AD', 'wb') as file:
         pickle.dump(All_signal_corr_AD, file)
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole signal corr'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole signal corr'+'.jpg')
 #%%
 if Type == 'Young':
     gene_list = gene_list_young
@@ -646,10 +646,10 @@ for index in range(len(All_tuning_curve)):
         pass
 
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole tuning curve'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole tuning curve'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole tuning curve'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole tuning curve'+'.jpg')
     plt.close()
 #%%
 if Type == 'Young':
@@ -672,10 +672,10 @@ for index in range(len(All_noise_corr)):
         type = 'wild type'
         pass
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/noise_corr/'+'Whole noise corr'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/noise_corr/'+'Whole noise corr'+'.jpg')
     plt.close()
 elif Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/noise_corr/'+'Whole noise corr'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/noise_corr/'+'Whole noise corr'+'.jpg')
     plt.close()
 #%%
 if Type == 'Young':
@@ -699,10 +699,10 @@ for index in range(len(All_dy_list)):
         pass
 
 if Type == 'Young':
-    plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole EPSP'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole EPSP'+'.jpg')
     plt.close()
 if Type == 'Old':
-    plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole EPSP'+'.jpg')
+    plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole EPSP'+'.jpg')
     plt.close()
 # plt.figure(figsize=(8, 6))
 # sns.heatmap(All_dy_list[16], cmap='viridis', vmax=0.1)
@@ -713,15 +713,15 @@ from PIL import Image
 
 # 图像文件路径
 if Type == 'Young':
-    image_files = ['/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole tuning curve.jpg',
-                   '/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole signal corr.jpg',
-                   '/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/'+'Whole EPSP.jpg',
-                   '/Users/sonmjack/Downloads/age2 result_fam1r2/noise_corr/'+'Whole noise corr.jpg']
+    image_files = ['/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole tuning curve.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole signal corr.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/'+'Whole EPSP.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/noise_corr/'+'Whole noise corr.jpg']
 if Type == 'Old':
-    image_files = ['/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole tuning curve.jpg',
-                   '/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole signal corr.jpg',
-                   '/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/'+'Whole EPSP.jpg',
-                   '/Users/sonmjack/Downloads/age10 result_fam1r2/noise_corr/'+'Whole noise corr.jpg']
+    image_files = ['/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole tuning curve.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole signal corr.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/'+'Whole EPSP.jpg',
+                   '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/noise_corr/'+'Whole noise corr.jpg']
 # 打开图像并放入列表
 images = [Image.open(image) for image in image_files]
 
@@ -740,6 +740,6 @@ for image in images:
 
 # 保存新图像
 if Type == 'Young':
-    new_image.save('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/combined_image_AD.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/combined_image_AD.jpg')
 if Type == 'Old':
-    new_image.save('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/combined_image_AD.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/combined_image_AD.jpg')

@@ -9,10 +9,10 @@ import numpy as np
 import pickle
 import pandas as pd
 #%%
-be_data = scipy.io.loadmat('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_trackdata.mat')
+be_data = scipy.io.loadmat('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_trackdata.mat')
 import h5py
-mat_trigger = np.load('/Users/sonmjack/Downloads/simon_paper/shengyuan_trigger_fam1.npy')
-type_array = h5py.File('/Users/sonmjack/Downloads/simon_paper/data_fam1novfam1_timeseries.mat')
+mat_trigger = np.load('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_fam1.npy')
+type_array = h5py.File('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/data_fam1novfam1_timeseries.mat')
 
 gene = type_array['genotype'][:, :].T
 # mat_label = np.zeros((gene.shape[0],4))
@@ -59,32 +59,32 @@ del be_data, be_phi_sum_fam1,be_phi_sum_nov,be_phi_sum_fam1r2
 import pandas as pd
 Type = 'Old'
 if Type == 'Young':
-    with open('/Users/sonmjack/Downloads/age2 result_fam1/fam1_S_df_f.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/fam1_S_df_f.pkl', 'rb') as file:
         All_df_f1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_nov/nov_S_df_f.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_nov/nov_S_df_f.pkl', 'rb') as file:
         All_df_f2 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_S_df_f.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_S_df_f.pkl', 'rb') as file:
         All_df_f3 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1/fam1_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/fam1_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_nov/nov_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_nov/nov_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve2 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age2 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve3 = pickle.load(file)
     gene_list = gene_list_young
     #fig, axes = plt.subplots(6, 1, figsize=(8*1, 36))
 elif Type == 'Old':
-    with open('/Users/sonmjack/Downloads/age10 result_fam1/fam1_S_df_f.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1/fam1_S_df_f.pkl', 'rb') as file:
         All_df_f1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_nov/nov_S_df_f.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_nov/nov_S_df_f.pkl', 'rb') as file:
         All_df_f2 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_S_df_f.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_S_df_f.pkl', 'rb') as file:
         All_df_f3 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1/fam1_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1/fam1_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve1 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_nov/nov_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_nov/nov_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve2 = pickle.load(file)
-    with open('/Users/sonmjack/Downloads/age10 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
+    with open('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/fam1r2_S_tuning curve.pkl', 'rb') as file:
         All_tuning_curve3 = pickle.load(file)
     gene_list = gene_list_old
     #fig, axes = plt.subplots(4, 3, figsize=(8*3, 24))
@@ -160,10 +160,10 @@ for index in range(len(All_df_f1)):
         plt.gca().spines['top'].set_visible(False)
         plt.gca().spines['right'].set_visible(False)
         if Type == 'Young':
-            plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/df corr d23/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df corr d23/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         elif Type == 'Old':
-            plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/df corr d23/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df corr d23/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         plt.close()
 
@@ -173,10 +173,10 @@ for index in range(len(All_df_f1)):
         plt.gca().spines['top'].set_visible(False)
         plt.gca().spines['right'].set_visible(False)
         if Type == 'Young':
-            plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/df corr d12/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df corr d12/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         elif Type == 'Old':
-            plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/df corr d12/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df corr d12/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         plt.close()
 
@@ -186,10 +186,10 @@ for index in range(len(All_df_f1)):
         plt.gca().spines['top'].set_visible(False)
         plt.gca().spines['right'].set_visible(False)
         if Type == 'Young':
-            plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/df corr d13/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df corr d13/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         elif Type == 'Old':
-            plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/df corr d13/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df corr d13/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         plt.close()
 
@@ -206,12 +206,12 @@ from PIL import Image
 import os
 # 图像文件路径
 if Type == 'Young':
-    image_folder = '/Users/sonmjack/Downloads/age2 result_fam1r2/df corr d13'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df corr d13'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 
 if Type == 'Old':
-    image_folder = '/Users/sonmjack/Downloads/age10 result_fam1r2/df corr d13'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df corr d13'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 # 打开图像并放入列表
@@ -232,21 +232,21 @@ for image in images:
 
 # 保存新图像
 if Type == 'Young':
-    new_image.save('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/corr AD df_13.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/corr AD df_13.jpg')
 if Type == 'Old':
-    new_image.save('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/corr AD df_13.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/corr AD df_13.jpg')
 #%%
 #%%
 from PIL import Image
 import os
 # 图像文件路径
 if Type == 'Young':
-    image_folder = '/Users/sonmjack/Downloads/age2 result_fam1r2/df corr d12'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df corr d12'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 
 if Type == 'Old':
-    image_folder = '/Users/sonmjack/Downloads/age10 result_fam1r2/df corr d12'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df corr d12'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 # 打开图像并放入列表
@@ -267,20 +267,20 @@ for image in images:
 
 # 保存新图像
 if Type == 'Young':
-    new_image.save('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/corr AD df_12.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/corr AD df_12.jpg')
 if Type == 'Old':
-    new_image.save('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/corr AD df_12.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/corr AD df_12.jpg')
 #%%
 from PIL import Image
 import os
 # 图像文件路径
 if Type == 'Young':
-    image_folder = '/Users/sonmjack/Downloads/age2 result_fam1r2/df corr d23'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df corr d23'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 
 if Type == 'Old':
-    image_folder = '/Users/sonmjack/Downloads/age10 result_fam1r2/df corr d23'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df corr d23'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 # 打开图像并放入列表
@@ -301,9 +301,9 @@ for image in images:
 
 # 保存新图像
 if Type == 'Young':
-    new_image.save('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/corr AD df_23.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/corr AD df_23.jpg')
 if Type == 'Old':
-    new_image.save('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/corr AD df_23.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/corr AD df_23.jpg')
 
 
 #%%
@@ -352,10 +352,10 @@ for index in range(len(All_df_f1)):
         plt.gca().spines['top'].set_visible(False)
         plt.gca().spines['right'].set_visible(False)
         if Type == 'Young':
-            plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/df tuning d23/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df tuning d23/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         elif Type == 'Old':
-            plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/df tuning d23/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df tuning d23/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         plt.close()
 
@@ -365,10 +365,10 @@ for index in range(len(All_df_f1)):
         plt.gca().spines['top'].set_visible(False)
         plt.gca().spines['right'].set_visible(False)
         if Type == 'Young':
-            plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/df tuning d12/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df tuning d12/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         elif Type == 'Old':
-            plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/df tuning d12/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df tuning d12/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         plt.close()
 
@@ -378,10 +378,10 @@ for index in range(len(All_df_f1)):
         plt.gca().spines['top'].set_visible(False)
         plt.gca().spines['right'].set_visible(False)
         if Type == 'Young':
-            plt.savefig('/Users/sonmjack/Downloads/age2 result_fam1r2/df tuning d13/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df tuning d13/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         elif Type == 'Old':
-            plt.savefig('/Users/sonmjack/Downloads/age10 result_fam1r2/df tuning d13/' + f'{index}_AD df corr' + '.jpg')
+            plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df tuning d13/' + f'{index}_AD df corr' + '.jpg')
             plt.close()
         plt.close()
 
@@ -401,12 +401,12 @@ from PIL import Image
 import os
 # 图像文件路径
 if Type == 'Young':
-    image_folder = '/Users/sonmjack/Downloads/age2 result_fam1r2/df tuning d13'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df tuning d13'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 
 if Type == 'Old':
-    image_folder = '/Users/sonmjack/Downloads/age10 result_fam1r2/df tuning d13'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df tuning d13'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 # 打开图像并放入列表
@@ -427,21 +427,21 @@ for image in images:
 
 # 保存新图像
 if Type == 'Young':
-    new_image.save('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/corr AD tuning_13.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/corr AD tuning_13.jpg')
 if Type == 'Old':
-    new_image.save('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/corr AD tuning_13.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/corr AD tuning_13.jpg')
 #%%
 #%%
 from PIL import Image
 import os
 # 图像文件路径
 if Type == 'Young':
-    image_folder = '/Users/sonmjack/Downloads/age2 result_fam1r2/df tuning d12'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df tuning d12'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 
 if Type == 'Old':
-    image_folder = '/Users/sonmjack/Downloads/age10 result_fam1r2/df tuning d12'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df tuning d12'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 # 打开图像并放入列表
@@ -462,20 +462,20 @@ for image in images:
 
 # 保存新图像
 if Type == 'Young':
-    new_image.save('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/corr AD tuning_12.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/corr AD tuning_12.jpg')
 if Type == 'Old':
-    new_image.save('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/corr AD tuning_12.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/corr AD tuning_12.jpg')
 #%%
 from PIL import Image
 import os
 # 图像文件路径
 if Type == 'Young':
-    image_folder = '/Users/sonmjack/Downloads/age2 result_fam1r2/df tuning d23'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/df tuning d23'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 
 if Type == 'Old':
-    image_folder = '/Users/sonmjack/Downloads/age10 result_fam1r2/df tuning d23'
+    image_folder = '/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/df tuning d23'
     image_files = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
     image_files.sort(key=lambda x: int(''.join(filter(str.isdigit, x))))
 # 打开图像并放入列表
@@ -496,6 +496,6 @@ for image in images:
 
 # 保存新图像
 if Type == 'Young':
-    new_image.save('/Users/sonmjack/Downloads/age2 result_fam1r2/signal_corr/corr AD tuning_23.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1r2/signal_corr/corr AD tuning_23.jpg')
 if Type == 'Old':
-    new_image.save('/Users/sonmjack/Downloads/age10 result_fam1r2/signal_corr/corr AD tuning_23.jpg')
+    new_image.save('/Users/shengyuancai/Downloads/Imperial paper/Data/age10 result_fam1r2/signal_corr/corr AD tuning_23.jpg')
