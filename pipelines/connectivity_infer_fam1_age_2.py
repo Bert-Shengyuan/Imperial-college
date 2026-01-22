@@ -63,63 +63,63 @@ import mat73
 # # mat_trigger = mat_label[mat_label[:,0]!=0]
 # # path = '/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_fam1.npy'
 # # np.save(path,mat_trigger)
-# #%%
-# mat_trigger1 = np.load('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_fam1.npy')
-#
-# #%%  age older  fam1
-# neuron_spike = []
-# neuron_time_list = []
+#%%
+mat_trigger = np.load('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/shengyuan_trigger_fam1.npy')
+
+#%%  age older  fam1
+#neuron_spike = []
+#neuron_time_list = []
 # be_list = []
-# gene_list = []
-# age_list = []
+gene_list = []
+age_list = []
 # mutual_list = []
-# for i in range(10,46,2):#0, len(mat_trigger), 2
-#     neuron_times = []
-#     if i == len(mat_trigger):
-#         break
-#     if i == 18:
-#         pass
-#     else:
-#         cell_df = spike_time_all[int(mat_trigger[i, 0]):int(mat_trigger[i + 1, 0])]
-#         num_rows = len(cell_df)
-#         for j in range(num_rows):
-#             window_size = 50
-#             # 计算移动平均值
-#             smooth_data = np.convolve(cell_df[j][0], np.ones(window_size) / window_size, mode='valid')
-#             neuron_times.append(smooth_data)
-#         neuron_time_list.append(neuron_times)
-#
-#         cell_array = spike_sum[int(mat_trigger[i,0]):int(mat_trigger[i + 1,0])]
-#         num_rows = len(cell_array)
-#         num_column = len(cell_array[0][0])
-#         neurons = np.zeros((num_rows, num_column))
-#
-#         # 长度不一致需要截断处理然后再看
-#         for j in range(num_rows):
-#             neurons[j, :] = (cell_array[j][0] * 10).astype(int)
-#         neuron_spike.append(neurons)
-#         # 索引原始的be_list
-#         # be_list.append(be_phi_sum[int(i/2),0])
-#         # gene_list.append(mat_trigger[i,1])
-#         # age_list.append(mat_trigger[i,2])
-#
-#         # num_features = num_rows
-#         # mutinfo_d = np.zeros((num_features, num_features))
-#         # #计算每两line数据之间的互信息
-#         # for m in range(num_features):
-#         #     for n in range(m + 1, num_features):
-#         #         a = neurons[m, :][neurons[m, :] != 0]
-#         #         b = neurons[n, :][neurons[n, :] != 0]
-#         #         max_size = max(len(a), len(b))
-#         #         a= np.pad(a, (0, max_size - len(a)), mode='constant')
-#         #         b= np.pad(b, (0, max_size - len(b)), mode='constant')
-#         #         mi = normalized_mutual_info_score(a, b)
-#         #
-#         #         mutinfo_d[m, n] = mi
-#         #         mutinfo_d[n, m] = mi
-#         # mutual_list.append(mutinfo_d)
-#
-# #%%
+for i in range(10,46,2):#0, len(mat_trigger), 2
+    #neuron_times = []
+    if i == len(mat_trigger):
+        break
+    if i == 18:
+        pass
+    else:
+        # cell_df = spike_time_all[int(mat_trigger[i, 0]):int(mat_trigger[i + 1, 0])]
+        # num_rows = len(cell_df)
+        # for j in range(num_rows):
+        #     window_size = 50
+        #     # 计算移动平均值
+        #     smooth_data = np.convolve(cell_df[j][0], np.ones(window_size) / window_size, mode='valid')
+        #     neuron_times.append(smooth_data)
+        # neuron_time_list.append(neuron_times)
+        #
+        # cell_array = spike_sum[int(mat_trigger[i,0]):int(mat_trigger[i + 1,0])]
+        # num_rows = len(cell_array)
+        # num_column = len(cell_array[0][0])
+        # neurons = np.zeros((num_rows, num_column))
+
+        # 长度不一致需要截断处理然后再看
+        # for j in range(num_rows):
+        #     neurons[j, :] = (cell_array[j][0] * 10).astype(int)
+        # neuron_spike.append(neurons)
+        # 索引原始的be_list
+        # be_list.append(be_phi_sum[int(i/2),0])
+        gene_list.append(mat_trigger[i,1])
+        age_list.append(mat_trigger[i,2])
+
+        # num_features = num_rows
+        # mutinfo_d = np.zeros((num_features, num_features))
+        # #计算每两line数据之间的互信息
+        # for m in range(num_features):
+        #     for n in range(m + 1, num_features):
+        #         a = neurons[m, :][neurons[m, :] != 0]
+        #         b = neurons[n, :][neurons[n, :] != 0]
+        #         max_size = max(len(a), len(b))
+        #         a= np.pad(a, (0, max_size - len(a)), mode='constant')
+        #         b= np.pad(b, (0, max_size - len(b)), mode='constant')
+        #         mi = normalized_mutual_info_score(a, b)
+        #
+        #         mutinfo_d[m, n] = mi
+        #         mutinfo_d[n, m] = mi
+        # mutual_list.append(mutinfo_d)
+
+#%%
 # plt.plot(neuron_spike[10][1,:])
 # plt.show()
 # #%% save data
@@ -147,7 +147,7 @@ with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1_ex_in
 with open('/Users/shengyuancai/Downloads/Imperial paper/Data/Raw data/fam1_mutual_list_age2.pkl', 'rb') as file:
     mutual_list = pickle.load(file)
 
-
+#%%
 neuron_index = []
 
 for i in range(len(neuron_spike)):
@@ -281,6 +281,7 @@ for k in range(0,1):
     ax.set_title('Modified locally linear embedding of dynamic distence'+f'-{type}-{k}')
     fig.colorbar(p)
     plt.savefig('/Users/shengyuancai/Downloads/Imperial paper/Data/age2 result_fam1/'+'dynamic distence_version2'+f'-{type}-'+f'{k}.jpg')
+    plt.show()
 #%%
 import networkx as nx
 def Connector(Q):
