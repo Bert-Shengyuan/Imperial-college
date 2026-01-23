@@ -627,8 +627,8 @@ def visualize_firing_rates_dual_ordering(firing_rate_matrix, rastermap_isort, gr
 
     Returns:
     --------
-    fig : matplotlib.figure.Figure
-        The generated figure
+    fig_path : Path
+        Path to the saved figure
     """
     output_dir = Path(output_dir)
 
@@ -638,58 +638,45 @@ def visualize_firing_rates_dual_ordering(firing_rate_matrix, rastermap_isort, gr
     # Create figure with two subplots
     fig, axes = plt.subplots(1, 2, figsize=figsize)
 
-    # Normalize firing rates for visualization
+    # Prepare firing rate data
     data = firing_rate_matrix.copy()
     if data.ndim == 1:
         data = data.reshape(-1, 1)
 
-    # Z-score normalization for better visualization
-    data_mean = np.mean(data, axis=1, keepdims=True)
-    data_std = np.std(data, axis=1, keepdims=True)
-    data_std[data_std == 0] = 1  # Avoid division by zero
-    data_normalized = (data - data_mean) / data_std
+    # Normalize data to [0, 1] range for raster-style visualization
+    # Use percentile-based normalization to handle outliers
+    vmin_pct, vmax_pct = np.percentile(data, [1, 99])
+    if vmax_pct > vmin_pct:
+        data_normalized = (data - vmin_pct) / (vmax_pct - vmin_pct)
+    else:
+        data_normalized = data - data.min()
+        if data_normalized.max() > 0:
+            data_normalized = data_normalized / data_normalized.max()
 
-    # Clip extreme values for visualization
-    vmin, vmax = np.percentile(data_normalized, [2, 98])
+    # Clip to [0, 1]
+    data_normalized = np.clip(data_normalized, 0, 1)
 
     # Left panel: Rastermap ordering
     data_rastermap = data_normalized[rastermap_isort, :]
-    im1 = axes[0].imshow(data_rastermap, aspect='auto', cmap='viridis',
-                         vmin=vmin, vmax=vmax, interpolation='nearest')
+    im1 = axes[0].imshow(data_rastermap, aspect='auto', cmap='gray_r',
+                         vmin=0, vmax=1, interpolation='nearest')
     axes[0].set_title(f'Rastermap Order\n{env_name} - Session {session_id}', fontsize=12)
     axes[0].set_xlabel('Time / Features', fontsize=10)
     axes[0].set_ylabel('Neurons (sorted)', fontsize=10)
 
     # Right panel: Graph-based Markov ordering
     data_graph = data_normalized[graph_order, :]
-    im2 = axes[1].imshow(data_graph, aspect='auto', cmap='viridis',
-                         vmin=vmin, vmax=vmax, interpolation='nearest')
+    im2 = axes[1].imshow(data_graph, aspect='auto', cmap='gray_r',
+                         vmin=0, vmax=1, interpolation='nearest')
     axes[1].set_title(f'Graph-based Markov Order\n{env_name} - Session {session_id}', fontsize=12)
     axes[1].set_xlabel('Time / Features', fontsize=10)
     axes[1].set_ylabel('Neurons (sorted)', fontsize=10)
-
-    # Add cluster boundaries for graph-based ordering
-    unique_labels = np.unique(graph_labels)
-    boundaries = []
-    for label in unique_labels[:-1]:
-        # Find where each cluster ends in the sorted order
-        cluster_mask = graph_labels[graph_order] == label
-        if np.any(cluster_mask):
-            last_idx = np.where(cluster_mask)[0][-1]
-            boundaries.append(last_idx + 0.5)
-
-    for b in boundaries:
-        axes[1].axhline(y=b, color='white', linewidth=0.5, linestyle='--', alpha=0.7)
-
-    # Add colorbar
-    cbar = fig.colorbar(im2, ax=axes, orientation='vertical', fraction=0.02, pad=0.04)
-    cbar.set_label('Z-scored activity', fontsize=10)
 
     plt.tight_layout()
 
     # Save figure
     fig_path = output_dir / f'firing_rates_dual_order_{env_name}_session{session_id}.png'
-    plt.savefig(fig_path, dpi=150, bbox_inches='tight')
+    plt.savefig(fig_path, dpi=150, bbox_inches='tight', facecolor='white')
     plt.close()
 
     return fig_path
