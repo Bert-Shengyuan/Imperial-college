@@ -27,6 +27,15 @@ from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 from sklearn.metrics import fowlkes_mallows_score, homogeneity_completeness_v_measure
 from scipy.stats import spearmanr
 import warnings
+
+try:
+    from rastermap import Rastermap
+except ImportError:
+    import subprocess
+
+    subprocess.check_call(['pip', 'install', 'rastermap'])
+    from rastermap import Rastermap
+
 warnings.filterwarnings('ignore')
 
 # =============================================================================
@@ -34,9 +43,9 @@ warnings.filterwarnings('ignore')
 # =============================================================================
 
 # Base data directory (update this path for your system)
-BASE_DATA_DIR = Path('/Users/sonmjack/Downloads')
+# BASE_DATA_DIR = Path('/Users/sonmjack/Downloads')
 # Alternative path format:
-# BASE_DATA_DIR = Path('/Users/shengyuancai/Downloads/Imperial paper/Data')
+BASE_DATA_DIR = Path('/Users/shengyuancai/Downloads/Imperial paper/Data')
 
 # Data paths for wild-type young animals (age2)
 DATA_PATHS = {
@@ -64,12 +73,12 @@ DATA_PATHS = {
 }
 
 # Trigger file for identifying wild-type animals (gene code 119)
-TRIGGER_FILE = BASE_DATA_DIR / 'simon_paper' / 'shengyuan_trigger_fam1.npy'
+#TRIGGER_FILE = BASE_DATA_DIR / 'simon_paper' / 'shengyuan_trigger_fam1.npy'
 # Alternative:
-# TRIGGER_FILE = BASE_DATA_DIR / 'Raw data' / 'shengyuan_trigger_fam1.npy'
+TRIGGER_FILE = BASE_DATA_DIR / 'Raw data' / 'shengyuan_trigger_fam1.npy'
 
 # Output directory for results
-OUTPUT_DIR = Path('./rastermap_analysis_results')
+OUTPUT_DIR = Path(BASE_DATA_DIR/'rastermap_analysis_results')
 OUTPUT_DIR.mkdir(exist_ok=True)
 
 # Wild-type gene code
@@ -425,27 +434,14 @@ def rastermap_clustering_from_correlation(connectivity_matrix, n_clusters=None):
     isort : np.ndarray
         Rastermap sorting indices
     """
-    try:
-        from rastermap import Rastermap
-    except ImportError:
-        import subprocess
-        subprocess.check_call(['pip', 'install', 'rastermap'])
-        from rastermap import Rastermap
 
     # Use the connectivity matrix as features
     # Each neuron's row represents its connectivity profile
-    model = Rastermap(
-        n_components=1,
-        n_X=40,
-        n_Y=40,
-        nbin=50,
-        alpha=1.0,
-        K=1.0,
-        init='pca'
-    )
-
+    model = Rastermap(n_PCs=n_clusters,
+                      locality=0,
+                      grid_upsample=5)
     # Fit using connectivity profiles
-    embedding = model.fit_transform(connectivity_matrix)
+    embedding = model.fit(connectivity_matrix)
     isort = model.isort
 
     n_neurons = len(isort)
@@ -549,7 +545,7 @@ def load_firing_rates(env):
     firing_rates_list : list
         List of firing rate matrices for each session
     """
-    path = DATA_PATHS[env]['epsp']
+    path = DATA_PATHS[env]['spike']
     if not path.exists():
         print(f"Warning: {path} not found")
         return None
@@ -559,6 +555,29 @@ def load_firing_rates(env):
 
     return firing_rates
 
+def load_epsp_results(env):
+    """
+    Load firing rate (EPSP) data for a given environment.
+
+    Parameters:
+    -----------
+    env : str
+        Environment name ('fam1', 'nov', or 'fam2')
+
+    Returns:
+    --------
+    firing_rates_list : list
+        List of firing rate matrices for each session
+    """
+    path = DATA_PATHS[env]['epsp']
+    if not path.exists():
+        print(f"Warning: {path} not found")
+        return None
+
+    with open(path, 'rb') as f:
+        epsp_results = pickle.load(f)
+
+    return epsp_results
 
 def load_graph_clustering(env, session_idx):
     """
@@ -633,7 +652,7 @@ def get_wildtype_indices(trigger_file=TRIGGER_FILE):
 # MAIN ANALYSIS FUNCTIONS
 # =============================================================================
 
-def analyze_single_session(firing_rate_matrix, graph_clustering, session_id, env_name,
+def analyze_single_session(firing_rate_matrix, graph_clustering, EPSP_matrix, session_id, env_name,
                           target_scale=133, output_dir=OUTPUT_DIR):
     """
     Perform full analysis on a single session.
@@ -671,8 +690,7 @@ def analyze_single_session(firing_rate_matrix, graph_clustering, session_id, env
     else:
         closest_scale = target_scale if target_scale in graph_clustering['community_id'] else 199
 
-    graph_labels = graph_clustering['community_id'].get(closest_scale,
-                                                         graph_clustering['community_id'][199])
+    graph_labels = graph_clustering['community_id'][closest_scale]
     graph_labels = np.array(graph_labels)
 
     # Determine number of clusters from graph method
@@ -701,11 +719,11 @@ def analyze_single_session(firing_rate_matrix, graph_clustering, session_id, env
 
     # Run graph analyses for both clustering methods
     print(f"  Running graph analysis with graph-based clusters...")
-    graph_metrics_graph = build_graph(firing_rate_matrix.copy(), graph_labels)
+    graph_metrics_graph = build_graph(EPSP_matrix.copy(), graph_labels)
     results['graph_metrics_graph_based'] = graph_metrics_graph
 
     print(f"  Running graph analysis with rastermap clusters...")
-    graph_metrics_rastermap = build_graph(firing_rate_matrix.copy(), rastermap_labels)
+    graph_metrics_rastermap = build_graph(EPSP_matrix.copy(), rastermap_labels)
     results['graph_metrics_rastermap'] = graph_metrics_rastermap
 
     return results
@@ -743,6 +761,7 @@ def run_full_analysis(envs=['fam1', 'nov', 'fam2'], output_dir=OUTPUT_DIR):
 
         # Load firing rates
         firing_rates = load_firing_rates(env)
+        EPSP_results = load_epsp_results(env)
         if firing_rates is None:
             print(f"Could not load firing rates for {env}")
             continue
@@ -757,7 +776,7 @@ def run_full_analysis(envs=['fam1', 'nov', 'fam2'], output_dir=OUTPUT_DIR):
                 continue
 
             firing_rate_matrix = firing_rates[global_idx]
-
+            EPSP_matrix = EPSP_results[global_idx]
             # Load graph clustering
             graph_clustering = load_graph_clustering(env, wt_idx)
             if graph_clustering is None:
@@ -769,6 +788,7 @@ def run_full_analysis(envs=['fam1', 'nov', 'fam2'], output_dir=OUTPUT_DIR):
                 session_results = analyze_single_session(
                     firing_rate_matrix,
                     graph_clustering,
+                    EPSP_matrix,
                     session_id=global_idx,
                     env_name=env,
                     output_dir=output_dir
