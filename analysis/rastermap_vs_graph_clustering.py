@@ -440,7 +440,7 @@ def rastermap_clustering_from_correlation(connectivity_matrix, n_clusters=None):
     # Each neuron's row represents its connectivity profile
     model = Rastermap(n_PCs=n_clusters,
                       locality=0,
-                      grid_upsample=5)
+                      grid_upsample=5) # 0.5 1 
     # Fit using connectivity profiles
     embedding = model.fit(connectivity_matrix)
     isort = model.isort
@@ -1358,7 +1358,7 @@ def save_results(all_results, output_dir=OUTPUT_DIR):
 
     print(f"Results saved to {output_path}")
 
-
+#%%
 def load_existing_results(output_dir=OUTPUT_DIR):
     """
     Load existing analysis results from pickle file.
@@ -1386,7 +1386,7 @@ def load_existing_results(output_dir=OUTPUT_DIR):
     print(f"Loaded results from {results_path}")
     return all_results
 
-
+#%%
 def run_visualization_and_correlation_analysis(all_results=None, output_dir=OUTPUT_DIR,
                                                 load_from_file=True):
     """
@@ -1473,7 +1473,7 @@ def run_visualization_and_correlation_analysis(all_results=None, output_dir=OUTP
 # =============================================================================
 # MAIN EXECUTION
 # =============================================================================
-
+#%%
 if __name__ == '__main__':
     import argparse
 
@@ -1492,7 +1492,7 @@ Examples:
   python rastermap_vs_graph_clustering.py --output-dir /path/to/output
         """
     )
-    parser.add_argument('--visualization-only', action='store_true',
+    parser.add_argument('--visualization-only', action='store_true',default=True,
                         help='Only run visualization and correlation analysis (requires existing results)')
     parser.add_argument('--output-dir', type=str, default=None,
                         help='Custom output directory for results')
@@ -1568,3 +1568,4 @@ Examples:
     print("Analysis complete!")
     print(f"Results saved to: {OUTPUT_DIR}")
     print("=" * 70)
+
